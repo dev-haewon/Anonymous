@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "baseUrl": "src",
+    "strict": true,
+    "noEmit": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitThis": false,
+    "paths": {
+        "Common/*": ["common/*"],
+        "Popup/*": ["popup/*"],
+        "Options/*": ["options/*"]
+    },
+    "typeRoots": [
+        "./node_modules/@types",
+        "./src/types"
+    ]
+  },
+  "include": [
+    "src/**/*.ts", // src 폴더 내의 모든 .ts 파일 포함
+    "src/types/**/*",  // types 폴더 추가
+  ],
+  "exclude": [
+    "node_modules", // node_modules는 기본적으로 제외됨
+    "dist", // 빌드 폴더 제외
+  ]
+}

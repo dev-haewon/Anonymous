@@ -1,0 +1,40 @@
+{
+  "name": "anonymous",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp dev",
+    "prod": "gulp prod",
+    "copy": "gulp copy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "@material-tailwind/html": "^2.3.2",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tarekraafat/autocomplete.js": "^10.2.7",
+    "@types/awesomplete": "^1.1.16",
+    "autoprefixer": "^10.4.20",
+    "awesomplete": "^1.1.7",
+    "cash-dom": "^8.1.5",
+    "daisyui": "^4.12.10",
+    "del": "^7.1.0",
+    "esbuild": "0.24.0",
+    "eslint": "9.11.1",
+    "globals": "^15.9.0",
+    "gulp": "5.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-livereload": "^4.0.2",
+    "gulp-postcss": "^10.0.0",
+    "gulp-pug": "5.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "pug-cli": "0.0.0",
+    "sass": "^1.79.3",
+    "tailwindcss": "^3.4.13",
+    "typescript-eslint": "^8.7.0"
+  }
+}

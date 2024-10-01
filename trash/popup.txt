@@ -1,0 +1,51 @@
+doctype html
+html(lang="en")
+  head
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel="stylesheet", href="./popup.css")
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title Popup
+  body
+    header 
+      nav(class="w-full px-4 py-2 flex justify-between items-center")
+        .navbar-brand
+          span(class="material-icons text-white") home
+        .navbar-end.flex.gap-4
+          button
+            span(class="material-icons text-white") settings
+          button
+            span(class="material-icons text-white") refresh
+    main
+
+
+      .flex.justify-center.items-center.h-96
+        label.flex.items-center.cursor-pointer
+            input#toggle-switch(type="checkbox", class="hidden")
+            div#switch-background(class="w-16 h-7 bg-red-600 hover:bg-red-700 rounded-full relative transition duration-200 ease-in-out") 
+                div#switch-dot(class="absolute top-1/2 size-11 bg-white rounded-full transition-transform duration-200 ease-in-out transform -translate-x-3 -translate-y-1/2")
+                    span(class="material-icons text-red-600 absolute top-2.5 left-2.5 close") close
+                    span(class="material-icons text-green-600 absolute top-2.5 left-2.5 check hidden") check
+
+  script(src="./popup.js") 
+
+
+
+// $(document).ready(function() {
+//     $('#toggle-switch').on('change', function() {
+//         if ($(this).is(':checked')) {
+//             $('#switch-background').removeClass('bg-red-600').addClass('bg-green-600');
+//             $('#switch-background').removeClass('hover:bg-red-700').addClass('hover:bg-green-700');
+//             $('#switch-dot').addClass('translate-x-8');
+//             $(this).siblings('#switch-background').find('.close').addClass('hidden');
+//             $(this).siblings('#switch-background').find('.check').removeClass('hidden');
+//         } else {
+//             $('#switch-background').removeClass('bg-green-600').addClass('bg-red-600');
+//             $('#switch-background').removeClass('hover:bg-green-700').addClass('hover:bg-red-700');
+//             $('#switch-dot').removeClass('translate-x-8');
+//             $(this).siblings('#switch-background').find('.close').removeClass('hidden');
+//             $(this).siblings('#switch-background').find('.check').addClass('hidden');
+//         }
+//     });
+//   });

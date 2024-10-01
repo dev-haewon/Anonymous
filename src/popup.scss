@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// * {
+//   box-sizing: border-box;
+// }
+
+body {
+  width: 500px;
+  height: 700px;
+  background-color: #f0f0f0;
+}
+.bg-sky {
+  background-color: #e0f2fe;
+}  
+.text-black {
+  color: black;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-blue {
+  color: #3b4890;
+}
+
+.text-thin {
+  font-weight: lighter;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.left {
+  left: -7px
+}
+
+i.material-icons, .no-drag {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
+}
+
+#navbar {
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.5);
+  .select {
+    width: 60px;
+  }
+}
+
+#search {
+  position: absolute; /* 입력창을 절대 위치로 설정 */
+  top: -5px; /* 상단에 위치 */
+  right: 0;
+  width: 75%; /* 부모 요소의 너비에 맞게 설정 */
+  padding: 0.5rem;
+  padding-right: 2.5rem;
+  outline: none;
+}
+
+.awesomplete {
+  ul {
+    position: absolute; 
+    width: 62.5%;
+    top: 100%; 
+    right: 2.3rem; 
+    max-height: 150px; 
+    overflow-y: auto; 
+    background: white; 
+    border: 1px solid #ccc; 
+    border-radius: 0.4rem; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+    z-index: 10; 
+    padding: 10px; 
+
+    li {
+      color: darkgrey;
+      mark {
+        background: inherit; 
+        color: #000;
+      }
+    }
+  }
+  span {
+    visibility: hidden;
+  }
+}
+
+i.material-icons.search {
+  right: 0rem;
+  border: 3px solid #3b488e;
+  border-radius: 0 0.4rem 0.4rem 0;
+  padding: 0.25rem;
+}
+
+
+
+
+
+
+
+
+
+
+
