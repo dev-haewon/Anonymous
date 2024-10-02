@@ -29,3 +29,41 @@ function choose() {
 
 // 초기 목록 설정
 choose();
+
+const pause = $('#pause');
+const resume = $('#resume');
+
+pause.on('click', () => {
+    pause.hide();
+    resume.show();
+});
+
+resume.on('click', () => {
+    resume.hide();
+    pause.show();
+});
+
+const main = $('main');
+const more = $('#more');
+const sideNav = $('#sideNav');
+
+more.on('click', (e) => {
+    e.stopPropagation();
+    sideNav.addClass('open');
+    main.addClass('dimmed');
+    enable();
+});
+
+function enable() {
+    $(document).on('click.outside', (e) => {
+        if (!sideNav.is(e.target) && sideNav.has(e.target).length === 0 && !more.is(e.target) ) {
+            sideNav.removeClass('open');
+            main.removeClass('dimmed');
+            disable();
+        }
+    })
+}
+
+function disable() {
+    $(document).off('click.outside');
+}

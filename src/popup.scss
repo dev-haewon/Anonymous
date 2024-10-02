@@ -11,6 +11,22 @@ body {
   height: 700px;
   background-color: #f0f0f0;
 }
+
+main {
+  transition: filter 0.3s ease;
+}
+
+#settings {
+  font-size: 24px;
+  line-height: 32px;
+  position: absolute;
+  margin: 20px;
+}
+
+.dimmed {
+  filter: brightness(0.66);
+}
+
 .bg-sky {
   background-color: #e0f2fe;
 }  
@@ -38,6 +54,10 @@ body {
   left: -7px
 }
 
+.w-300 {
+  width: 310px;
+}
+
 i.material-icons, .no-drag {
   -webkit-user-select:none;
   -moz-user-select:none;
@@ -54,9 +74,9 @@ i.material-icons, .no-drag {
 
 #search {
   position: absolute; /* 입력창을 절대 위치로 설정 */
-  top: -5px; /* 상단에 위치 */
-  right: 0;
-  width: 75%; /* 부모 요소의 너비에 맞게 설정 */
+  top: -3.5px; /* 상단에 위치 */
+  right: 0px;
+  width: 225px; /* 부모 요소의 너비에 맞게 설정 */
   padding: 0.5rem;
   padding-right: 2.5rem;
   outline: none;
@@ -65,7 +85,7 @@ i.material-icons, .no-drag {
 .awesomplete {
   ul {
     position: absolute; 
-    width: 62.5%;
+    width: 62%;
     top: 100%; 
     right: 2.3rem; 
     max-height: 150px; 
@@ -97,9 +117,42 @@ i.material-icons.search {
   padding: 0.25rem;
 }
 
+#more {
+  margin-left: 68px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+  z-index: 1000;
+}
 
+#pause, #resume {
+  margin-left: 16px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
 
+.sideNav {
+  position: fixed;
+  top: 0;
+  left: -100%; /* 화면 밖에서 시작 */
+  width: 285px; /* 화면의 4/7 차지 */
+  height: 700px;
+  background-color: #ececec; /* 배경색 */
+  color: white;
+  transition: left 0.5s ease; /* 애니메이션 */
+  z-index: 1000;
+}
 
+.sideNav.open {
+  left: 0; /* 화면 안으로 슬라이드 */
+}
+
+.more {
+  z-index: 500;
+}
 
 
 

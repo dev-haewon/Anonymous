@@ -15,7 +15,6 @@
     "@eslint/js": "^9.11.1",
     "@material-tailwind/html": "^2.3.2",
     "@tailwindcss/forms": "^0.5.9",
-    "@tarekraafat/autocomplete.js": "^10.2.7",
     "@types/awesomplete": "^1.1.16",
     "autoprefixer": "^10.4.20",
     "awesomplete": "^1.1.7",

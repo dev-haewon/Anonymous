@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
   head
-    //- link(rel="stylesheet", href="node_modules/awesomplete/awesomplete.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0")
     link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
     link(rel="stylesheet", href="./popup.css")
     meta(charset='UTF-8')
@@ -10,27 +10,32 @@ html(lang="en")
     title Popup
   body
     header 
-     
+     ul#sideNav.sideNav
+      li#settings
+        i.material-symbols-outlined.text-black.text-3xl.bottom-3 settings
+        span#setting.text-black 설정
     main
       nav
         #navbar.bg-dcBlue.h-12.flex.items-center
-          .daisy-flex-1.flex.items-center
+          .flex.items-center
             button(class="-rotate-90 p-2 ml-1.5 hover:bg-dcPurple")
               i.material-icons.text-white.text-3xl open_in_new
           .flex.items-center
             .search-container.relative <!-- 검색 컨테이너 -->
               .form-control.flex.items-center
-                .relative.ml-4.h-8.w-72.bg-sky.rounded-md.flex.items-center
+                .relative.ml-4.h-8.w-300.bg-sky.rounded-md.flex.items-center
                   select#search-type.select.text-black.cursor-pointer.border-none.bg-transparent.outline-none.appearance-none(class="transition duration-300 ease")
                     option(value="id" selected).text-center ID
                     option(value="name").text-center Name
                   i.material-icons.text-dcBlue.text-2xl.relative.left.fold unfold_more
                   input#search.pl-4.text-black.bg-transparent.outline-none(type="search", required="", placeholder="검색어 입력...")
                   i.material-icons.text-dcBlue.text-1xl.absolute.search search
-          .daisy-flex-none
-            button
-              span(class="p-2 hover:bg-dcPurple")
-                i.material-icons.text-white.text-3xl settings 
-  script(src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js")  
-  //- script(src="node_modules/awesomplete/awesomplete.min.js")              
+          .flex.items-center.relative
+            button#pause(class="hover:bg-dcPurple absolute")
+              i.material-symbols-outlined.text-white.text-3xl pause_circle
+            button#resume(class="hover:bg-dcPurple absolute" style="display: none;")
+              i.material-symbols-outlined.text-white.text-3xl play_arrow
+            button#more(class="hover:bg-dcPurple absolute")
+              i.material-icons.text-white.text-3xl.more more_vert
+  script(src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js")             
   script(src="./popup.js")
