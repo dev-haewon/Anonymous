@@ -13,18 +13,28 @@ body {
 }
 
 main {
+  min-width: 500px;
+  min-height: 700px;
   transition: filter 0.3s ease;
 }
 
-#settings {
-  font-size: 24px;
-  line-height: 32px;
-  position: absolute;
-  margin: 20px;
+#sideNav {
+  nav {
+    position: relative;
+    flex-direction: row;
+    font-size: 16px;
+    margin: 15px;
+    
+    .close {
+      position: absolute;
+      right: 0;
+    }
+  }
 }
 
 .dimmed {
   filter: brightness(0.66);
+  background-color: #7e7e7e;
 }
 
 .bg-sky {
@@ -46,6 +56,10 @@ main {
   font-weight: lighter;
 }
 
+.ml-24 {
+  margin-left: 24px;
+}
+
 .ml-10 {
   margin-left: 10px;
 }
@@ -58,7 +72,7 @@ main {
   width: 310px;
 }
 
-i.material-icons, .no-drag {
+i.material-symbols-outlined, .no-drag {
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select:none;
@@ -110,7 +124,7 @@ i.material-icons, .no-drag {
   }
 }
 
-i.material-icons.search {
+i.material-symbols-outlined.search {
   right: 0rem;
   border: 3px solid #3b488e;
   border-radius: 0 0.4rem 0.4rem 0;
@@ -140,7 +154,7 @@ i.material-icons.search {
   left: -100%; /* 화면 밖에서 시작 */
   width: 285px; /* 화면의 4/7 차지 */
   height: 700px;
-  background-color: #ececec; /* 배경색 */
+  background-color: #f0f0f0; /* 배경색 */
   color: white;
   transition: left 0.5s ease; /* 애니메이션 */
   z-index: 1000;

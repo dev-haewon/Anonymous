@@ -33,33 +33,59 @@ choose();
 const pause = $('#pause');
 const resume = $('#resume');
 
-pause.on('click', () => {
-    pause.hide();
-    resume.show();
+let isOpen: boolean = false;
+
+pause.on('click', (e) => {
+    if (isOpen) {
+        e.stopImmediatePropagation();
+        close(); 
+    } else {
+        pause.hide();
+        resume.show();
+    }
 });
 
-resume.on('click', () => {
-    resume.hide();
-    pause.show();
+resume.on('click', (e) => {
+    if (isOpen) {
+        e.stopImmediatePropagation();
+        close(); 
+    } else {
+        resume.hide();
+        pause.show();
+    }
 });
 
 const main = $('main');
 const more = $('#more');
 const sideNav = $('#sideNav');
+const closeBtn = $('button.close');
 
 more.on('click', (e) => {
-    e.stopPropagation();
-    sideNav.addClass('open');
-    main.addClass('dimmed');
-    enable();
+    if (isOpen) {
+        e.stopImmediatePropagation();
+        close();
+    } else {
+        e.stopPropagation();
+        sideNav.addClass('open');
+        main.addClass('dimmed');
+        isOpen = true;
+        enable();
+    }
 });
+
+closeBtn.on('click', close);
+
+function close() {
+    sideNav.removeClass('open');
+    main.removeClass('dimmed');
+    isOpen = false;
+    disable();
+}
 
 function enable() {
     $(document).on('click.outside', (e) => {
         if (!sideNav.is(e.target) && sideNav.has(e.target).length === 0 && !more.is(e.target) ) {
-            sideNav.removeClass('open');
-            main.removeClass('dimmed');
-            disable();
+            close();
         }
     })
 }
