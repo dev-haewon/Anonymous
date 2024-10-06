@@ -11,14 +11,59 @@ html(lang="en")
     header 
      ul#sideNav.sideNav
       nav.flex
-        span#setting.text-black MENU
+        span.text-black MENU
         button.close
           i.material-symbols-outlined.text-black close
-      li#settings
-        button.settings.flex.ml-24
+      li#options
+        button.dropdown-btn.settings.flex.ml-24.my-gap
           i.material-symbols-outlined.text-black.text-2xl.mr-2 settings
           span.text-black.text-2xl 설정
-
+          i.material-symbols-outlined.text-black.text-2xl.down_arrow_2 keyboard_arrow_down
+        ul.dropdown-content.open
+          li 
+            span
+        button.dropdown-btn.notifications.flex.ml-24.my-gap
+          i.material-symbols-outlined.text-black.text-2xl.mr-2 notifications
+          span.text-black.text-2xl 알림
+          i.material-symbols-outlined.text-black.text-2xl.down_arrow_2 keyboard_arrow_down
+        ul.dropdown-content
+          li 
+            span 
+        button.dropdown-btn.statistic.flex.ml-24.my-gap
+          i.material-symbols-outlined.text-black.text-2xl.mr-2 monitoring 
+          span.text-black.text-2xl 통계
+          i.material-symbols-outlined.text-black.text-2xl.down_arrow_2 keyboard_arrow_down
+        ul.dropdown-content
+          li 
+            span 
+        button.dropdown-btn.log.flex.ml-24.my-gap
+          i.material-symbols-outlined.text-black.text-2xl.mr-2 receipt_long
+          span.text-black.text-2xl 로그
+          i.material-symbols-outlined.text-black.text-2xl.down_arrow_2 keyboard_arrow_down
+        ul.dropdown-content
+          li 
+            span 
+        button.dropdown-btn.data.flex.ml-24.my-gap
+          i.material-symbols-outlined.text-black.text-2xl.mr-2 database
+          span.text-black.text-2xl 데이터
+          i.material-symbols-outlined.text-black.text-2xl.down_arrow_3 keyboard_arrow_down
+        ul.dropdown-content
+          li 
+            span 
+        button.dropdown-btn.report.flex.ml-24.my-gap
+          i.material-symbols-outlined.text-black.text-2xl.mr-2 chat_error
+          span.text-black.text-2xl 문제신고
+          i.material-symbols-outlined.text-black.text-2xl.down_arrow_4 keyboard_arrow_down
+        ul.dropdown-content
+          li 
+            span 
+        button.dropdown-btn.info.flex.ml-24.my-gap
+          i.material-symbols-outlined.text-black.text-2xl.mr-2 info
+          span.text-black.text-2xl 정보
+          i.material-symbols-outlined.text-black.text-2xl.down_arrow_2 keyboard_arrow_down
+        ul.dropdown-content
+          li 
+            span 
 
     main
       nav

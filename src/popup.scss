@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-// * {
-//   box-sizing: border-box;
-// }
-
 body {
   width: 500px;
   height: 700px;
@@ -24,12 +20,55 @@ main {
     flex-direction: row;
     font-size: 16px;
     margin: 15px;
-    
+
     .close {
       position: absolute;
       right: 0;
     }
   }
+}
+
+#options {
+  button > span {
+    margin-left: 15px;
+  }
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: padding-bottom 0.3s ease-in-out;
+  display: block;
+  position: relative;
+  background-color: #3b4890;
+  padding-bottom: 0;
+  margin-top: -10px;
+  margin-left: 40px;
+  margin-right: 40px;
+
+  // open 클래스는 여기서 정의하지 않습니다.
+}
+
+// open 클래스에 대한 스타일을 여기서 정의
+.dropdown-content.open {
+  max-height: 250px; // 최대 높이를 동적으로 조정할 수 있습니다.
+  padding-bottom: 250px; // 콘텐츠에 맞게 조정
+}
+
+.down_arrow_2 {
+  margin-left: 130px;
+}
+
+.down_arrow_3 {
+  margin-left: 106px;
+}
+
+.down_arrow_4 {
+  margin-left: 82px;
+}
+
+.hidden {
+  display: none;
 }
 
 .dimmed {
@@ -39,7 +78,7 @@ main {
 
 .bg-sky {
   background-color: #e0f2fe;
-}  
+}
 .text-black {
   color: black;
 }
@@ -64,23 +103,29 @@ main {
   margin-left: 10px;
 }
 
+.my-gap {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
 .left {
-  left: -7px
+  left: -7px;
 }
 
 .w-300 {
   width: 310px;
 }
 
-i.material-symbols-outlined, .no-drag {
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none
+i.material-symbols-outlined,
+.no-drag {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #navbar {
-  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
   .select {
     width: 60px;
   }
@@ -98,23 +143,23 @@ i.material-symbols-outlined, .no-drag {
 
 .awesomplete {
   ul {
-    position: absolute; 
+    position: absolute;
     width: 62%;
-    top: 100%; 
-    right: 2.3rem; 
-    max-height: 150px; 
-    overflow-y: auto; 
-    background: white; 
-    border: 1px solid #ccc; 
-    border-radius: 0.4rem; 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
-    z-index: 10; 
-    padding: 10px; 
+    top: 100%;
+    right: 2.3rem;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding: 10px;
 
     li {
       color: darkgrey;
       mark {
-        background: inherit; 
+        background: inherit;
         color: #000;
       }
     }
@@ -140,7 +185,8 @@ i.material-symbols-outlined.search {
   z-index: 1000;
 }
 
-#pause, #resume {
+#pause,
+#resume {
   margin-left: 16px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -152,7 +198,7 @@ i.material-symbols-outlined.search {
   position: fixed;
   top: 0;
   left: -100%; /* 화면 밖에서 시작 */
-  width: 285px; /* 화면의 4/7 차지 */
+  width: 303px; /* 화면의 4/7 차지 */
   height: 700px;
   background-color: #f0f0f0; /* 배경색 */
   color: white;
@@ -167,10 +213,3 @@ i.material-symbols-outlined.search {
 .more {
   z-index: 500;
 }
-
-
-
-
-
-
-
