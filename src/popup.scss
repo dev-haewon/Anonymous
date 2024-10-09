@@ -2,16 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './styles/colors.scss';
+@import './styles/utility.scss';
+
+@font-face {
+  font-family: 'NanumSquareRound';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'NanumSquareRound';
+}
+
+@mixin transition($property, $duration: 0.3s, $timing: ease) {
+  transition: #{$property} #{$duration} #{$timing};
+}
+
 body {
   width: 500px;
   height: 700px;
-  background-color: #f0f0f0;
+  background-color: $background-white;
 }
 
 main {
   min-width: 500px;
   min-height: 700px;
-  transition: filter 0.3s ease;
+  @include transition(filter);
 }
 
 #sideNav {
@@ -28,92 +47,28 @@ main {
   }
 }
 
-#options {
-  button > span {
+#options button {
+  span {
+    margin-top: 3px;
     margin-left: 15px;
+    margin-right: 100px;
   }
 }
 
 .dropdown-content {
   max-height: 0;
   overflow: hidden;
-  transition: padding-bottom 0.3s ease-in-out;
+  @include transition(padding-bottom, 0.3s, ease-in-out);
   display: block;
   position: relative;
-  background-color: #3b4890;
+  background-color: inherit;
   padding-bottom: 0;
-  margin-top: -10px;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin: -10px 40px 0 40px;
 
-  // open 클래스는 여기서 정의하지 않습니다.
-}
-
-// open 클래스에 대한 스타일을 여기서 정의
-.dropdown-content.open {
-  max-height: 250px; // 최대 높이를 동적으로 조정할 수 있습니다.
-  padding-bottom: 250px; // 콘텐츠에 맞게 조정
-}
-
-.down_arrow_2 {
-  margin-left: 130px;
-}
-
-.down_arrow_3 {
-  margin-left: 106px;
-}
-
-.down_arrow_4 {
-  margin-left: 82px;
-}
-
-.hidden {
-  display: none;
-}
-
-.dimmed {
-  filter: brightness(0.66);
-  background-color: #7e7e7e;
-}
-
-.bg-sky {
-  background-color: #e0f2fe;
-}
-.text-black {
-  color: black;
-}
-
-.text-white {
-  color: white;
-}
-
-.text-blue {
-  color: #3b4890;
-}
-
-.text-thin {
-  font-weight: lighter;
-}
-
-.ml-24 {
-  margin-left: 24px;
-}
-
-.ml-10 {
-  margin-left: 10px;
-}
-
-.my-gap {
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-
-.left {
-  left: -7px;
-}
-
-.w-300 {
-  width: 310px;
+  &.open {
+    max-height: 250px;
+    padding-bottom: 250px;
+  }
 }
 
 i.material-symbols-outlined,
@@ -132,46 +87,45 @@ i.material-symbols-outlined,
 }
 
 #search {
-  position: absolute; /* 입력창을 절대 위치로 설정 */
-  top: -3.5px; /* 상단에 위치 */
+  position: absolute;
+  top: -3.5px;
   right: 0px;
-  width: 225px; /* 부모 요소의 너비에 맞게 설정 */
+  width: 225px;
   padding: 0.5rem;
   padding-right: 2.5rem;
   outline: none;
 }
 
-.awesomplete {
-  ul {
-    position: absolute;
-    width: 62%;
-    top: 100%;
-    right: 2.3rem;
-    max-height: 150px;
-    overflow-y: auto;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 0.4rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    padding: 10px;
+.awesomplete ul {
+  position: absolute;
+  width: 62%;
+  top: 100%;
+  right: 2.3rem;
+  max-height: 150px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  padding: 10px;
 
-    li {
-      color: darkgrey;
-      mark {
-        background: inherit;
-        color: #000;
-      }
+  li {
+    color: darkgrey;
+
+    mark {
+      background: inherit;
+      color: black;
     }
   }
-  span {
-    visibility: hidden;
-  }
+}
+.awesomplete span {
+  visibility: hidden;
 }
 
 i.material-symbols-outlined.search {
-  right: 0rem;
-  border: 3px solid #3b488e;
+  right: 0;
+  border: 3px solid $default-blue;
   border-radius: 0 0.4rem 0.4rem 0;
   padding: 0.25rem;
 }
@@ -197,19 +151,31 @@ i.material-symbols-outlined.search {
 .sideNav {
   position: fixed;
   top: 0;
-  left: -100%; /* 화면 밖에서 시작 */
-  width: 303px; /* 화면의 4/7 차지 */
+  left: -100%;
+  width: 303px;
   height: 700px;
-  background-color: #f0f0f0; /* 배경색 */
+  background-color: $background-white;
   color: white;
-  transition: left 0.5s ease; /* 애니메이션 */
+  @include transition(left, 0.5s);
   z-index: 1000;
-}
 
-.sideNav.open {
-  left: 0; /* 화면 안으로 슬라이드 */
+  &.open {
+    left: 0;
+  }
 }
 
 .more {
   z-index: 500;
+}
+
+.down_arrow_2 {
+  margin-left: 130px;
+}
+
+.down_arrow_3 {
+  margin-left: 106px;
+}
+
+.down_arrow_4 {
+  margin-left: 82px;
 }

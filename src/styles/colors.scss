@@ -1,0 +1,55 @@
+$background-white: #f0f0f0;
+$default-blue: #3a4690;
+$red: #c92121;
+$green: #02834b;
+$lime: #74cb34;
+$hotpink: #ca0064;
+$orange: #d98d06;
+$sky: #1d90bf;
+$violet: #553481;
+$dimmed-color: #7e7e7e;
+$box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+
+.text-Red {
+  color: $red;
+}
+
+.text-Green {
+  color: $green;
+}
+
+.text-Lime {
+  color: $lime;
+}
+
+.text-HotPink {
+  color: $hotpink;
+}
+
+.text-Sky {
+  color: $sky;
+}
+
+.text-Violet {
+  color: $violet;
+}
+
+.text-Orange {
+  color: $orange;
+}
+
+.text-black {
+  color: black;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-blue {
+  color: $default-blue;
+}
+
+.bg-sky {
+  background-color: #e0f2fe;
+}

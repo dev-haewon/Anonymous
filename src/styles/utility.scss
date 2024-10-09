@@ -1,0 +1,33 @@
+.hidden {
+  display: none;
+}
+
+.dimmed {
+  filter: brightness(0.66);
+  background-color: $dimmed-color;
+}
+
+.text-thin {
+  font-weight: lighter;
+}
+
+.my-gap {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.ml-24 {
+  margin-left: 24px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.left {
+  left: -7px;
+}
+
+.w-300 {
+  width: 310px;
+}
