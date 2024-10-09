@@ -1,21 +1,21 @@
-const withMT = require('@material-tailwind/html/utils/withMT');
 /** @type {import('tailwindcss').Config} */
-module.exports = withMT({
+module.exports = {
   content: ['./src/**/*.{html,pug}'],
   theme: {
-    colors: {
-      dcBlue: '#3b4890',
-      dcOrange: '#d98d06',
-      dcSky: '#1d90bf',
-      dcPurple: '#4a55a5',
-      dcDark: '#222222',
+    extend: {
+      colors: {
+        dcBlue: '#3b4890',
+        dcOrange: '#d98d06',
+        dcSky: '#1d90bf',
+        dcPurple: '#4a55a5',
+        dcDark: '#222222',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('daisyui')],
   daisyui: {
-    themes: ['light', 'dark'], // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
+    themes: false, // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
     darkTheme: 'dark', // name of one of the included themes for dark mode
-    defaultTheme: 'light',
     base: true, // applies background color and foreground color for root element by default
     styled: true, // include daisyUI colors and design decisions for all components
     utils: true, // adds responsive and modifier utility classes
@@ -23,4 +23,4 @@ module.exports = withMT({
     logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
     themeRoot: ':root', // The element that receives theme color CSS variables
   },
-});
+};

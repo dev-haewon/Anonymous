@@ -1,3 +1,5 @@
+$dimmed-color: #7e7e7e;
+
 .hidden {
   display: none;
 }
@@ -9,6 +11,12 @@
 
 .text-thin {
   font-weight: lighter;
+}
+
+.text-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .my-gap {
@@ -30,4 +38,8 @@
 
 .w-300 {
   width: 310px;
+}
+
+.w-full {
+  width: 100%;
 }

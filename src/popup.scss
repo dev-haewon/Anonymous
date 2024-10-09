@@ -58,16 +58,22 @@ main {
 .dropdown-content {
   max-height: 0;
   overflow: hidden;
-  @include transition(padding-bottom, 0.3s, ease-in-out);
+  @include transition(all, 0.3s, ease-in-out);
   display: block;
+  opacity: 0;
   position: relative;
   background-color: inherit;
   padding-bottom: 0;
   margin: -10px 40px 0 40px;
 
   &.open {
+    opacity: 1;
     max-height: 250px;
     padding-bottom: 250px;
+  }
+
+  li {
+    padding: 15px 0;
   }
 }
 
@@ -94,6 +100,12 @@ i.material-symbols-outlined,
   padding: 0.5rem;
   padding-right: 2.5rem;
   outline: none;
+}
+
+#clear-button {
+  position: fixed;
+  left: 320px;
+  color: #999; /* 버튼 색상 */
 }
 
 .awesomplete ul {
@@ -166,16 +178,4 @@ i.material-symbols-outlined.search {
 
 .more {
   z-index: 500;
-}
-
-.down_arrow_2 {
-  margin-left: 130px;
-}
-
-.down_arrow_3 {
-  margin-left: 106px;
-}
-
-.down_arrow_4 {
-  margin-left: 82px;
 }

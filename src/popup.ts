@@ -30,8 +30,24 @@ function choose() {
 // 초기 목록 설정
 choose();
 
-const pause = $('#pause');
+const search = $('#search');
+const clear = $('#clear-button');
+
+search.on('input', function () {
+  if ($(this).val()) {
+    clear.show();
+  } else {
+    clear.hide();
+  }
+});
+
+clear.on('click', function () {
+  search.val('');
+  $(this).hide();
+});
+
 const resume = $('#resume');
+const pause = $('#pause');
 
 let isOpen: boolean = false;
 

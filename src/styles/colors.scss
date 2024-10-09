@@ -7,7 +7,7 @@ $hotpink: #ca0064;
 $orange: #d98d06;
 $sky: #1d90bf;
 $violet: #553481;
-$dimmed-color: #7e7e7e;
+$gray: #767676;
 $box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 
 .text-Red {
@@ -36,6 +36,10 @@ $box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 
 .text-Orange {
   color: $orange;
+}
+
+.text-Gray {
+  color: $gray;
 }
 
 .text-black {

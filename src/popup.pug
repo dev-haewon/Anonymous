@@ -8,6 +8,7 @@ html(lang="en")
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     title Popup
   body
+
     header 
      ul#sideNav.sideNav
       nav.flex
@@ -17,10 +18,22 @@ html(lang="en")
       li#options
         button.dropdown-btn.settings.flex.ml-24.my-gap
           i.material-symbols-outlined.text-Orange.text-2xl.mr-2 settings
+          
           span.text-black 일반 설정
         ul.dropdown-content
-          li 
-            span
+          li
+            span#refreshIntervalDescription.text-Gray.text-center 자동 새로고침 간격
+            input(type="range" id="refreshInterval" min="1" max="6" step="0" value="3" class="daisy-range daisy-range-warning daisy-range-xs")
+            .flex.w-full.justify-between.px-2.text-xs.text-Gray
+              each val in [1, 2, 3, 4, 5]
+                span= val + "초"
+              span 해제
+          li
+            span#removeLimitCountDescription.text-Gray.text-center 1회 최대 삭제갯수
+            input(type="range" id="removeLimitCount" min="1" max="10" step="0" value="10" class="daisy-range daisy-range-warning daisy-range-xs")
+            .flex.w-full.justify-between.px-2.text-xs.text-Gray
+              each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                span= val 
         button.dropdown-btn.notifications.flex.ml-24.my-gap
           i.material-symbols-outlined.text-Sky.text-2xl.mr-2 notifications
           span.text-black 키워드 알림
@@ -57,7 +70,6 @@ html(lang="en")
         ul.dropdown-content
           li 
             span 
-
     main
       nav
         #navbar.bg-dcBlue.h-12.flex.items-center
@@ -72,7 +84,8 @@ html(lang="en")
                     option(value="id" selected).text-center ID
                     option(value="name").text-center Name
                   i.material-symbols-outlined.text-dcBlue.text-2xl.relative.left.fold unfold_more
-                  input#search.pl-4.text-black.bg-transparent.outline-none(type="search", required="", placeholder="검색어 입력...")
+                  input#search.pl-4.text-black.bg-transparent.outline-none(type="text", required="", placeholder="검색어 입력...")
+                  button(id="clear-button" style="display: none;") X
                   i.material-symbols-outlined.text-dcBlue.text-1xl.absolute.search search
           .flex.items-center.relative
             button#pause(class="hover:bg-dcPurple absolute")
