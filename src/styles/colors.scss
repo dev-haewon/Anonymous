@@ -7,6 +7,7 @@ $hotpink: #ca0064;
 $orange: #d98d06;
 $sky: #1d90bf;
 $violet: #553481;
+$light-gray: #ebebeb;
 $gray: #767676;
 $box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 
@@ -52,6 +53,23 @@ $box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 
 .text-blue {
   color: $default-blue;
+}
+
+.btn-blue {
+  background-color: $default-blue;
+  border: 0;
+  border-radius: 0;
+}
+
+.btn-white {
+  background-color: transparent !important;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  &:hover {
+    background-color: transparent !important;
+  }
 }
 
 .bg-sky {

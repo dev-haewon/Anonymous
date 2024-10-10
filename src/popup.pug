@@ -13,27 +13,33 @@ html(lang="en")
      ul#sideNav.sideNav
       nav.flex
         span.text-black MENU
-        button.close
+        button.close.daisy-btn.btn-white.items-center
           i.material-symbols-outlined.text-black close
       li#options
         button.dropdown-btn.settings.flex.ml-24.my-gap
           i.material-symbols-outlined.text-Orange.text-2xl.mr-2 settings
           
           span.text-black 일반 설정
-        ul.dropdown-content
-          li
-            span#refreshIntervalDescription.text-Gray.text-center 자동 새로고침 간격
-            input(type="range" id="refreshInterval" min="1" max="6" step="0" value="3" class="daisy-range daisy-range-warning daisy-range-xs")
-            .flex.w-full.justify-between.px-2.text-xs.text-Gray
-              each val in [1, 2, 3, 4, 5]
-                span= val + "초"
-              span 해제
-          li
-            span#removeLimitCountDescription.text-Gray.text-center 1회 최대 삭제갯수
-            input(type="range" id="removeLimitCount" min="1" max="10" step="0" value="10" class="daisy-range daisy-range-warning daisy-range-xs")
-            .flex.w-full.justify-between.px-2.text-xs.text-Gray
-              each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                span= val 
+        ul.dropdown-content.relative.flex.space-between
+          .daisy-tabs.daisy-tabs-lifted.daisy-tabs-xs(role="tablist")
+            input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="기본" checked="checked")
+            div(role='tabpanel' class='daisy-tab-content')
+              li
+                span#refreshIntervalDescription.text-Gray.text-center 자동 새로고침 간격
+                input(type="range" id="refreshInterval" min="1" max="6" step="0" value="3" class="daisy-range daisy-range-warning daisy-range-xs")
+                .flex.w-full.justify-between.px-2.text-xs.text-Gray
+                  each val in [1, 2, 3, 4, 5]
+                    span= val + "초"
+                  span 해제
+              li
+                span#removeLimitCountDescription.text-Gray.text-center 1회 최대 삭제갯수
+                input(type="range" id="removeLimitCount" min="1" max="10" step="0" value="10" class="daisy-range daisy-range-warning daisy-range-xs")
+                .flex.w-full.justify-between.px-2.text-xs.text-Gray
+                  each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    span= val 
+            input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="고급")
+            div(role='tabpanel' class='daisy-tab-content')
+
         button.dropdown-btn.notifications.flex.ml-24.my-gap
           i.material-symbols-outlined.text-Sky.text-2xl.mr-2 notifications
           span.text-black 키워드 알림
@@ -74,8 +80,9 @@ html(lang="en")
       nav
         #navbar.bg-dcBlue.h-12.flex.items-center
           .flex.items-center
-            button(class="-rotate-90 p-2 ml-1.5 hover:bg-dcPurple")
-              i.material-symbols-outlined.text-white.text-3xl open_in_new
+            a.-rotate-90
+              button(class="daisy-btn p-2 btn-blue hover:bg-dcPurple")
+                i.material-symbols-outlined.text-white.text-3xl open_in_new
           .flex.items-center
             .search-container.relative <!-- 검색 컨테이너 -->
               .form-control.flex.items-center
@@ -88,11 +95,11 @@ html(lang="en")
                   button(id="clear-button" style="display: none;") X
                   i.material-symbols-outlined.text-dcBlue.text-1xl.absolute.search search
           .flex.items-center.relative
-            button#pause(class="hover:bg-dcPurple absolute")
+            button#pause(class="daisy-btn btn-blue hover:bg-dcPurple absolute")
               i.material-symbols-outlined.text-white.text-3xl pause_circle
-            button#resume(class="hover:bg-dcPurple absolute" style="display: none;")
+            button#resume(class="daisy-btn btn-blue hover:bg-dcPurple absolute" style="display: none;")
               i.material-symbols-outlined.text-white.text-3xl play_arrow
-            button#more(class="hover:bg-dcPurple absolute")
+            button#more(class="daisy-btn btn-blue hover:bg-dcPurple absolute")
               i.material-symbols-outlined.text-white.text-3xl.more more_vert
   script(src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js")             
   script(src="./popup.js")

@@ -18,7 +18,7 @@ async function clean(done) {
 // Pug를 HTML로 변환하는 작업
 function pugTask() {
   return gulp
-    .src('./src/*.pug')
+    .src('./src/popup.pug')
     .pipe(pug({ pretty: true }))
     .pipe(gulp.dest('./dist'))
     .pipe(livereload());

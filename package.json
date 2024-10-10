@@ -1,16 +1,7 @@
 {
-  "name": "anonymous",
+  "name": "dcswiper-reborn",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "gulp dev",
-    "prod": "gulp prod",
-    "copy": "gulp copy"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "디시인사이드 갤 괄리용 확장 프로그램",
   "devDependencies": {
     "@eslint/js": "9.12.0",
     "@tailwindcss/forms": "0.5.9",
@@ -35,5 +26,12 @@
     "sonarlint": "1.1.0",
     "tailwindcss": "3.4.13",
     "typescript-eslint": "8.8.1"
-  }
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "gulp dev",
+    "prod": "gulp prod",
+    "copy": "gulp copy"
+  },
+  "packageManager": "pnpm@9.12.0"
 }

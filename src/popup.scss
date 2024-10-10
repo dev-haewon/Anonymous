@@ -43,15 +43,21 @@ main {
     .close {
       position: absolute;
       right: 0;
+      top: -11px;
     }
   }
 }
 
 #options button {
+  padding: 12px 24px;
+  margin: 0;
+  min-width: 303px;
+  &:hover {
+    background-color: $light-gray;
+  }
   span {
     margin-top: 3px;
     margin-left: 15px;
-    margin-right: 100px;
   }
 }
 
@@ -72,9 +78,33 @@ main {
     padding-bottom: 250px;
   }
 
+  input {
+    left: 75px;
+    color: black;
+    --radius-start: none;
+    --radius-end: none;
+  }
+
   li {
     padding: 15px 0;
   }
+}
+
+.daisy-tabs.daisy-tabs-lifted.daisy-tabs-xs {
+  transform: translateY(0.2in);
+}
+
+.daisy-tabs-lifted > .daisy-tab:is(input:checked):before {
+  --radius-start: none;
+  --radius-end: none;
+}
+
+.daisy-tabs-lifted
+  > .daisy-tab:is(.daisy-tab-active, [aria-selected='true']):not(
+    .daisy-tab-disabled
+  ):not([disabled]),
+.daisy-tabs-lifted > .daisy-tab:is(input:checked) {
+  background-color: #fcac23;
 }
 
 i.material-symbols-outlined,
@@ -104,7 +134,7 @@ i.material-symbols-outlined,
 
 #clear-button {
   position: fixed;
-  left: 320px;
+  left: 310px;
   color: #999; /* 버튼 색상 */
 }
 
