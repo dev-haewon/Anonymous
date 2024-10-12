@@ -71,6 +71,7 @@ main {
   background-color: inherit;
   padding-bottom: 0;
   margin: -10px 40px 0 40px;
+  min-width: 260px;
 
   &.open {
     opacity: 1;

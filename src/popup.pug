@@ -24,19 +24,25 @@ html(lang="en")
           .daisy-tabs.daisy-tabs-lifted.daisy-tabs-xs(role="tablist")
             input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="기본" checked="checked")
             div(role='tabpanel' class='daisy-tab-content')
-              li
-                span#refreshIntervalDescription.text-Gray.text-center 자동 새로고침 간격
-                input(type="range" id="refreshInterval" min="1" max="6" step="0" value="3" class="daisy-range daisy-range-warning daisy-range-xs")
-                .flex.w-full.justify-between.px-2.text-xs.text-Gray
-                  each val in [1, 2, 3, 4, 5]
-                    span= val + "초"
-                  span 해제
-              li
-                span#removeLimitCountDescription.text-Gray.text-center 1회 최대 삭제갯수
-                input(type="range" id="removeLimitCount" min="1" max="10" step="0" value="10" class="daisy-range daisy-range-warning daisy-range-xs")
-                .flex.w-full.justify-between.px-2.text-xs.text-Gray
-                  each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                    span= val 
+              li(style="display: grid; row-gap: 10px;")
+                ul.flex.items-center.gap-10(class="daisy-tooltip daisy-tooltip-right" data-tip="기본 값: 1초")
+                  i.material-symbols-outlined.text-Gray refresh
+                  span#refreshIntervalDescription.text-Gray.text-center 자동 새로고침 간격
+                ul(style="max-width: 225px;")
+                  input(type="range" id="refreshInterval" min="1" max="6" step="0" value="3" class="daisy-range daisy-range-warning daisy-range-xs")
+                  .flex.w-full.justify-between.px-2.text-xs.text-Gray
+                    each val in [1, 2, 3, 4, 5]
+                      span= val + "초"
+                    span 해제
+              li(style="display: grid; row-gap: 10px;")
+                ul.flex.items-center.gap-10(class="daisy-tooltip daisy-tooltip-right" data-tip="기본 값: 10")
+                  i.material-symbols-outlined.text-Gray call_missed_outgoing
+                  span#removeLimitCountDescription.text-Gray.text-center 1회 최대 삭제갯수
+                ul(style="max-width: 225px;")
+                  input(type="range" id="removeLimitCount" min="1" max="10" step="0" value="10" class="daisy-range daisy-range-warning daisy-range-xs")
+                  .flex.w-full.justify-between.px-2.text-xs.text-Gray
+                    each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                      span= val 
             input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="고급")
             div(role='tabpanel' class='daisy-tab-content')
 
