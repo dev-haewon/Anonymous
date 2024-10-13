@@ -136,12 +136,14 @@ $('.dropdown-btn').on('click', function (e: MouseEvent) {
   }
 });
 
-const checkbox = $('input[type="checkbox"]');
+const preview = $('#preview');
 
-checkbox.on('change', function () {
+preview.find('input[type="checkbox"]').on('change', function () {
   if ($(this).is(':checked')) {
     $(this).css('--tglbg', '#fcac23');
+    preview.find('i').hide();
   } else {
     $(this).css('--tglbg', '#f0f0f0');
+    preview.find('i').show();
   }
 });

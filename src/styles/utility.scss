@@ -9,6 +9,16 @@ $dimmed-color: #7e7e7e;
   background-color: $dimmed-color;
 }
 
+.font-base {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.font-xs {
+  font-size: 12px;
+  line-height: 16px;
+}
+
 .text-thin {
   font-weight: lighter;
 }
@@ -22,6 +32,10 @@ $dimmed-color: #7e7e7e;
 .my-gap {
   margin-top: 16px;
   margin-bottom: 16px;
+}
+
+.mr-1 {
+  margin-right: 6px;
 }
 
 .ml-24 {

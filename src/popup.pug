@@ -23,7 +23,42 @@ html(lang="en")
           .daisy-tabs.daisy-tabs-lifted.daisy-tabs-xs(role="tablist")
             input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="기본" checked="checked")
             div(role='tabpanel' class='daisy-tab-content')
-              input(type='checkbox', class="bg-black border-black daisy-toggle daisy-toggle-warning daisy-toggle-sm [--tglbg:#f0f0f0]")
+              ul.scrollable.pt-2.pb-2
+                li#preview
+                  ul.flex.items-center.justify-between
+                    .flex.items-center.justify-center
+                      i.material-symbols-outlined.text-Orange.font-base.text-center.mr-1(style="display: none;") construction
+                      span.text-black 미리보기
+                    input(type='checkbox', class="float-right bg-black border-black daisy-toggle daisy-toggle-warning daisy-toggle-sm [--tglbg:#fcac23]" checked="checked" style="margin-right: 16px;")
+                  p.text-Gray.font-xs 글을 우클릭하여 미리 봅니다.
+                li#user-info 
+                  ul.flex.items-center.justify-between
+                    .flex.items-center.justify-center
+                      i.material-symbols-outlined.text-Orange.font-base.text-center.mr-1(style="display: none;") construction
+                      span.text-black 유저 정보
+                    input(type='checkbox', class="float-right bg-black border-black daisy-toggle daisy-toggle-warning daisy-toggle-sm [--tglbg:#fcac23]" checked="checked" style="margin-right: 16px;")
+                  p.text-Gray.font-xs 유저와 IP정보를 표시합니다.
+                li#user-info 
+                  ul.flex.items-center.justify-between
+                    .flex.items-center.justify-center
+                      i.material-symbols-outlined.text-Orange.font-base.text-center.mr-1(style="display: none;") construction
+                      span.text-black 유저 정보
+                    input(type='checkbox', class="float-right bg-black border-black daisy-toggle daisy-toggle-warning daisy-toggle-sm [--tglbg:#fcac23]" checked="checked" style="margin-right: 16px;")
+                  p.text-Gray.font-xs 유저와 IP정보를 표시합니다.
+                li#user-info 
+                  ul.flex.items-center.justify-between
+                    .flex.items-center.justify-center
+                      i.material-symbols-outlined.text-Orange.font-base.text-center.mr-1(style="display: none;") construction
+                      span.text-black 유저 정보
+                    input(type='checkbox', class="float-right bg-black border-black daisy-toggle daisy-toggle-warning daisy-toggle-sm [--tglbg:#fcac23]" checked="checked" style="margin-right: 16px;")
+                  p.text-Gray.font-xs 유저와 IP정보를 표시합니다.
+                li#user-info 
+                  ul.flex.items-center.justify-between
+                    .flex.items-center.justify-center
+                      i.material-symbols-outlined.text-Orange.font-base.text-center.mr-1(style="display: none;") construction
+                      span.text-black 유저 정보
+                    input(type='checkbox', class="float-right bg-black border-black daisy-toggle daisy-toggle-warning daisy-toggle-sm [--tglbg:#fcac23]" checked="checked" style="margin-right: 16px;")
+                  p.text-Gray.font-xs 유저와 IP정보를 표시합니다.
             input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="범위")
             div(role='tabpanel' class='daisy-tab-content')
               li(style="display: grid; row-gap: 10px;")
