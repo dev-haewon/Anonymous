@@ -1,4 +1,4 @@
-import $ from 'cash-dom';
+import $, { Cash } from 'cash-dom';
 import Awesomplete from 'awesomplete';
 import data from '../public/mgalleryDB.json';
 
@@ -136,14 +136,46 @@ $('.dropdown-btn').on('click', function (e: MouseEvent) {
   }
 });
 
-const preview = $('#preview');
+interface ToggleableElement {
+  checkbox: Cash;
+  icon: Cash;
+}
 
-preview.find('input[type="checkbox"]').on('change', function () {
-  if ($(this).is(':checked')) {
-    $(this).css('--tglbg', '#fcac23');
-    preview.find('i').hide();
-  } else {
-    $(this).css('--tglbg', '#f0f0f0');
-    preview.find('i').show();
-  }
-});
+function toggleCheckbox(element: ToggleableElement) {
+  element.checkbox.on('change', function () {
+    const isChecked = $(this).is(':checked');
+    $(this).css('--tglbg', isChecked ? '#fcac23' : '#f0f0f0');
+    element.icon.toggle(!isChecked);
+  });
+}
+
+const preview: ToggleableElement = {
+  checkbox: $('input[type="checkbox"]', '#preview'),
+  icon: $('i', '#preview'),
+};
+
+const user_info: ToggleableElement = {
+  checkbox: $('input[type="checkbox"]', '#user-info'),
+  icon: $('i', '#user-info'),
+};
+
+const user_tag: ToggleableElement = {
+  checkbox: $('input[type="checkbox"]', '#user-tag'),
+  icon: $('i', '#user-tag'),
+};
+
+const auto_navigation: ToggleableElement = {
+  checkbox: $('input[type="checkbox"]', '#auto-navigation'),
+  icon: $('i', '#auto-navigation'),
+};
+
+const admin_panel: ToggleableElement = {
+  checkbox: $('input[type="checkbox"]', '#admin-panel'),
+  icon: $('i', '#admin-panel'),
+};
+
+toggleCheckbox(preview);
+toggleCheckbox(user_info);
+toggleCheckbox(user_tag);
+toggleCheckbox(auto_navigation);
+toggleCheckbox(admin_panel);
