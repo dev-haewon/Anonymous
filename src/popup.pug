@@ -18,14 +18,16 @@ html(lang="en")
       li#options
         button.dropdown-btn.settings.flex.ml-24.my-gap
           i.material-symbols-outlined.text-Orange.text-2xl.mr-2 settings
-          
           span.text-black 일반 설정
-        ul.dropdown-content.relative.flex.space-between
+        ul.dropdown-content.relative.flex.space-center
           .daisy-tabs.daisy-tabs-lifted.daisy-tabs-xs(role="tablist")
             input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="기본" checked="checked")
             div(role='tabpanel' class='daisy-tab-content')
+              input(type='checkbox', class="bg-black border-black daisy-toggle daisy-toggle-warning daisy-toggle-sm [--tglbg:#f0f0f0]")
+            input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="범위")
+            div(role='tabpanel' class='daisy-tab-content')
               li(style="display: grid; row-gap: 10px;")
-                ul.flex.items-center.gap-10(class="daisy-tooltip daisy-tooltip-right" data-tip="기본 값: 1초")
+                ul.flex.items-center.gap-10(class="daisy-tooltip daisy-tooltip-right" data-tip="기본 값: 3초")
                   i.material-symbols-outlined.text-Gray refresh
                   span#refreshIntervalDescription.text-Gray.text-center 자동 새로고침 간격
                 ul(style="max-width: 225px;")
@@ -43,7 +45,13 @@ html(lang="en")
                   .flex.w-full.justify-between.px-2.text-xs.text-Gray
                     each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                       span= val 
-            input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="고급")
+            input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="차단")
+            div(role='tabpanel' class='daisy-tab-content')
+
+            input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="메모")
+            div(role='tabpanel' class='daisy-tab-content')
+
+            input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="실험")
             div(role='tabpanel' class='daisy-tab-content')
 
         button.dropdown-btn.notifications.flex.ml-24.my-gap

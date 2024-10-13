@@ -87,12 +87,16 @@ main {
   }
 
   li {
-    padding: 15px 0;
+    padding: 25px 0 0 0;
   }
 }
 
+.daisy-tab-content {
+  margin-left: 60px;
+}
+
 .daisy-tabs.daisy-tabs-lifted.daisy-tabs-xs {
-  transform: translateY(0.2in);
+  transform: translate(-0.6in, 0.2in);
 }
 
 .daisy-tabs-lifted > .daisy-tab:is(input:checked):before {

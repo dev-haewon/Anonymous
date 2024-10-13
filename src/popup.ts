@@ -135,3 +135,13 @@ $('.dropdown-btn').on('click', function (e: MouseEvent) {
       .css('padding-bottom', '250px');
   }
 });
+
+const checkbox = $('input[type="checkbox"]');
+
+checkbox.on('change', function () {
+  if ($(this).is(':checked')) {
+    $(this).css('--tglbg', '#fcac23');
+  } else {
+    $(this).css('--tglbg', '#f0f0f0');
+  }
+});
