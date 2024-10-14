@@ -71,8 +71,10 @@ main {
   position: relative;
   background-color: inherit;
   padding-bottom: 0;
-  margin: -10px 40px 0 40px;
-  min-width: 300px;
+  padding-left: 10px;
+  top: -15px;
+  margin: 0 -40px 0 20px;
+  max-width: 300px;
 
   &.open {
     opacity: 1;
@@ -95,9 +97,11 @@ main {
 .daisy-tab-content {
   margin-left: 60px;
   min-height: 235px;
+  max-width: 300px;
 }
 
 .daisy-tabs.daisy-tabs-lifted.daisy-tabs-xs {
+  min-width: 500px;
   transform: translate(-0.6in, 0.2in);
 }
 
@@ -218,8 +222,24 @@ i.material-symbols-outlined.search {
 }
 
 .scrollable {
-  height: 210px;
+  width: 250px;
+  height: 205px;
   overflow-y: scroll;
   scroll-behavior: smooth;
   scrollbar-color: color-mix(in oklch, currentColor 35%, $orange) transparent !important;
+}
+
+#memoSelect {
+  left: 0;
+  height: 235px;
+  flex-wrap: nowrap;
+  gap: 25px;
+  writing-mode: vertical-rl;
+}
+
+#memoTable {
+  max-width: 225px;
+  thead > tr th {
+    color: black;
+  }
 }

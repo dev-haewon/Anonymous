@@ -46,6 +46,16 @@ clear.on('click', function () {
   $(this).hide();
 });
 
+search.on('focus', function () {
+  clear.show();
+});
+
+search.on('blur', function () {
+  setTimeout(() => {
+    clear.hide();
+  }, 200);
+});
+
 const resume = $('#resume');
 const pause = $('#pause');
 
@@ -179,3 +189,11 @@ toggleCheckbox(user_info);
 toggleCheckbox(user_tag);
 toggleCheckbox(auto_navigation);
 toggleCheckbox(admin_panel);
+
+const $tableBody = $('#memoTable tbody');
+
+const sampleData = [
+  // { key: 'gilDong', value: 'ㅁㄴㅇㄹ' },
+  { key: '홍길동', value: '의적' },
+  // { key: '123.456', value: 'VPN' },
+];

@@ -23,7 +23,7 @@ html(lang="en")
           .daisy-tabs.daisy-tabs-lifted.daisy-tabs-xs(role="tablist")
             input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="기본" checked="checked")
             div(role='tabpanel' class='daisy-tab-content')
-              ul.scrollable.pt-2.pb-2
+              ul.scrollable
                 li#preview
                   ul.flex.items-center.justify-between
                     .flex.items-center.justify-center
@@ -84,7 +84,18 @@ html(lang="en")
             div(role='tabpanel' class='daisy-tab-content')
 
             input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="메모")
-            div(role='tabpanel' class='daisy-tab-content')
+            div(role='tabpanel' class='daisy-tab-content' style="margin-left: 45px;")
+              div#memoSelect.flex.place-items-center.items-center.text-black.flex.no-drag
+                span 유저
+                span 닉네임
+                span 아이피
+              div
+                table#memoTable
+                  thead
+                    tr 
+                       
+                  tbody 
+
 
             input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="실험")
             div(role='tabpanel' class='daisy-tab-content')
@@ -141,7 +152,7 @@ html(lang="en")
                     option(value="name").text-center Name
                   i.material-symbols-outlined.text-dcBlue.text-2xl.relative.left.fold unfold_more
                   input#search.pl-4.text-black.bg-transparent.outline-none(type="text", required="", placeholder="검색어 입력...")
-                  button(id="clear-button" style="display: none;") X
+                  button(id="clear-button" style="font-size: 20px; display: none;") x
                   i.material-symbols-outlined.text-dcBlue.text-1xl.absolute.search search
           .flex.items-center.relative
             button#pause(class="daisy-btn btn-blue hover:bg-dcPurple absolute")
