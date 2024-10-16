@@ -84,11 +84,20 @@ html(lang="en")
             div(role='tabpanel' class='daisy-tab-content')
 
             input(type='radio' name='default' role='tab' class='daisy-tab' aria-label="메모")
-            div(role='tabpanel' class='daisy-tab-content' style="margin-left: 45px;")
-              div#memoSelect.flex.place-items-center.items-center.text-black.flex.no-drag
-                span 유저
-                span 닉네임
-                span 아이피
+            div(role='tabpanel' class='daisy-tab-content' style='margin-left: 50px !important;')
+              div#memoSelect.text-black.no-drag
+                #user
+                  span.selected 유저
+                  table.daisy-table.memoTable
+                    thead 
+                      tr
+                        th Key 
+                        th Value
+                    tbody
+                #nickname
+                  span 닉네임
+                #ip
+                  span 아이피
               div
                 table#memoTable
                   thead

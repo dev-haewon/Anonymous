@@ -190,10 +190,11 @@ toggleCheckbox(user_tag);
 toggleCheckbox(auto_navigation);
 toggleCheckbox(admin_panel);
 
-const $tableBody = $('#memoTable tbody');
+$('#memoSelect span').on('click', function () {
+  $(this).addClass('selected');
+  $('#memoSelect span').not(this).removeClass('selected');
+});
 
-const sampleData = [
-  // { key: 'gilDong', value: 'ㅁㄴㅇㄹ' },
-  { key: '홍길동', value: '의적' },
-  // { key: '123.456', value: 'VPN' },
-];
+function addMemo($node: Cash) {
+  const $list = $node.find('.memoTable');
+}
