@@ -2,199 +2,229 @@ import $, { Cash } from 'cash-dom';
 import Awesomplete from 'awesomplete';
 import data from '../public/mgalleryDB.json';
 
-// Awesomplete 인스턴스를 전역에서 사용
-const searchInput = $('#search')[0] as HTMLInputElement;
-const awesomplete = new Awesomplete(searchInput, {
-  minChars: 1,
-});
+class AutocompleteManager {
+    private searchInput: HTMLInputElement;
+    private awesomplete: Awesomplete;
+    private searchType: Cash;
 
-// 검색 유형 선택 시 자동완성 목록 업데이트
-$('#search-type').on('change', choose);
-
-function choose() {
-  const searchType = $('#search-type').val() as string;
-  $('#search').val('');
-
-  let items: string[] = [];
-
-  if (searchType === 'id') {
-    items = Object.values(data);
-  } else {
-    items = Object.keys(data);
-  }
-
-  // Awesomplete 인스턴스의 목록 업데이트
-  awesomplete.list = items;
-}
-
-// 초기 목록 설정
-choose();
-
-const search = $('#search');
-const clear = $('#clear-button');
-
-search.on('input', function () {
-  if ($(this).val()) {
-    clear.show();
-  } else {
-    clear.hide();
-  }
-});
-
-clear.on('click', function () {
-  search.val('');
-  $(this).hide();
-});
-
-search.on('focus', function () {
-  clear.show();
-});
-
-search.on('blur', function () {
-  setTimeout(() => {
-    clear.hide();
-  }, 200);
-});
-
-const resume = $('#resume');
-const pause = $('#pause');
-
-let isOpen: boolean = false;
-
-pause.on('click', (e: MouseEvent) => {
-  if (isOpen) {
-    e.stopImmediatePropagation();
-    close();
-  } else {
-    pause.hide();
-    resume.show();
-  }
-});
-
-resume.on('click', (e: MouseEvent) => {
-  if (isOpen) {
-    e.stopImmediatePropagation();
-    close();
-  } else {
-    resume.hide();
-    pause.show();
-  }
-});
-
-const main = $('main');
-const more = $('#more');
-const sideNav = $('#sideNav');
-const closeBtn = $('button.close');
-
-more.on('click', (e: MouseEvent) => {
-  if (isOpen) {
-    e.stopImmediatePropagation();
-    close();
-  } else {
-    e.stopPropagation();
-    sideNav.addClass('open');
-    main.addClass('dimmed');
-    isOpen = true;
-    enable();
-  }
-});
-
-closeBtn.on('click', close);
-
-function close() {
-  sideNav.removeClass('open');
-  main.removeClass('dimmed');
-  isOpen = false;
-  disable();
-}
-
-function enable() {
-  $(document).on('click.outside', (e) => {
-    if (
-      !sideNav.is(e.target) &&
-      sideNav.has(e.target).length === 0 &&
-      !more.is(e.target)
-    ) {
-      close();
+    constructor() {
+        this.searchInput = $('#search')[0] as HTMLInputElement;
+        this.awesomplete = new Awesomplete(this.searchInput, { minChars: 1 });
+        this.searchType = $('#search-type');
+        this.setupAutocomplete();
     }
-  });
+
+    private setupAutocomplete() {
+        this.searchType.on('change', this.updateList.bind(this));
+        this.updateList();
+    }
+
+    private updateList() {
+        const searchType = this.searchType.val() as string;
+        const items =
+            searchType === 'id' ? Object.values(data) : Object.keys(data);
+        this.searchInput.value = '';
+        this.awesomplete.list = items;
+    }
 }
 
-function disable() {
-  $(document).off('click.outside');
+class SideNavManager {
+    private sideNav: Cash;
+    private main: Cash;
+    private more: Cash;
+    private closeBtn: Cash;
+    private isOpen = false;
+
+    constructor() {
+        this.sideNav = $('#sideNav');
+        this.main = $('main');
+        this.more = $('#more');
+        this.closeBtn = $('button.close');
+        this.setupSideNav();
+    }
+
+    private setupSideNav() {
+        this.more.on('click', (e: MouseEvent) => this.toggleSideNav(e));
+        this.closeBtn.on('click', () => this.closeSideNav());
+    }
+
+    private toggleSideNav(e: MouseEvent) {
+        e.stopPropagation();
+        if (this.isOpen) {
+            this.closeSideNav();
+        } else {
+            this.openSideNav();
+        }
+    }
+
+    private openSideNav() {
+        this.sideNav.addClass('open');
+        this.main.addClass('dimmed');
+        this.isOpen = true;
+        $(document).on('click.outside', this.handleOutsideClick.bind(this));
+    }
+
+    private closeSideNav() {
+        this.sideNav.removeClass('open');
+        this.main.removeClass('dimmed');
+        this.isOpen = false;
+        $(document).off('click.outside');
+    }
+
+    private handleOutsideClick(e: MouseEvent) {
+        if (
+            !this.sideNav.is(e.target as HTMLElement) &&
+            this.sideNav.has(e.target as HTMLElement).length === 0 &&
+            !this.more.is(e.target as HTMLElement)
+        ) {
+            this.closeSideNav();
+        }
+    }
 }
 
-$('.dropdown-btn').on('click', function (e: MouseEvent) {
-  e.preventDefault();
-  const $dropdownContent = $(this).next('.dropdown-content');
+class PauseResumeManager {
+    private pause: Cash;
+    private resume: Cash;
+    private isPaused = false;
 
-  if ($dropdownContent.hasClass('open')) {
-    $dropdownContent
-      .removeClass('open')
-      .css('max-height', '0')
-      .css('padding-bottom', '0');
-  } else {
-    $('.dropdown-content.open')
-      .removeClass('open')
-      .css('max-height', '0')
-      .css('padding-bottom', '0');
+    constructor() {
+        this.pause = $('#pause');
+        this.resume = $('#resume');
+        this.setupPauseResume();
+    }
 
-    $dropdownContent
-      .addClass('open')
-      .css('max-height', '250px')
-      .css('padding-bottom', '250px');
-  }
-});
+    private setupPauseResume() {
+        this.pause.on('click', (e: MouseEvent) => this.togglePause(e));
+        this.resume.on('click', (e: MouseEvent) => this.togglePause(e));
+    }
+
+    private togglePause(e: MouseEvent) {
+        e.stopPropagation();
+        this.isPaused = !this.isPaused;
+        this.updateUI();
+    }
+
+    private updateUI() {
+        if (this.isPaused) {
+            this.pause.hide();
+            this.resume.show();
+        } else {
+            this.resume.hide();
+            this.pause.show();
+        }
+    }
+}
+
+class DropdownManager {
+    constructor() {
+        this.setupDropdown();
+    }
+
+    private setupDropdown() {
+        $('.dropdown-btn').on('click', this.toggleDropdown.bind(this));
+    }
+
+    private toggleDropdown(e: MouseEvent) {
+        e.stopPropagation();
+        const $dropdownContent = $(e.currentTarget as HTMLElement).next(
+            '.dropdown-content'
+        );
+
+        if ($dropdownContent.hasClass('open')) {
+            this.closeDropdown($dropdownContent);
+        } else {
+            $('.dropdown-content.open').each((_, el) =>
+                this.closeDropdown($(el))
+            );
+            this.openDropdown($dropdownContent);
+        }
+    }
+
+    private openDropdown($dropdownContent: Cash) {
+        $dropdownContent.addClass('open').css({
+            maxHeight: '250px',
+            paddingBottom: '250px',
+        });
+    }
+
+    private closeDropdown($dropdownContent: Cash) {
+        $dropdownContent.removeClass('open').css({
+            maxHeight: '0',
+            paddingBottom: '0',
+        });
+    }
+}
+
+class ToggleManager {
+    constructor(private elements: ToggleableElement[]) {
+        this.setupToggleCheckboxes();
+    }
+
+    private setupToggleCheckboxes() {
+        this.elements.forEach((element) => {
+            element.checkbox.on('change', () => {
+                const isChecked = element.checkbox.is(':checked');
+                element.checkbox.css(
+                    '--tglbg',
+                    isChecked ? '#fcac23' : '#f0f0f0'
+                );
+                element.icon.toggle(!isChecked);
+            });
+        });
+    }
+}
+
+class MemoManager {
+    constructor() {
+        this.setupMemo();
+    }
+
+    private setupMemo() {
+        $('#memoSelect span').on('click', this.selectMemo.bind(this));
+    }
+
+    private selectMemo(e: MouseEvent) {
+        const $target = $(e.currentTarget as HTMLElement);
+        $target.addClass('selected');
+        $('#memoSelect span').not($target).removeClass('selected');
+    }
+
+    public addMemo($node: Cash) {
+        const $list = $node.find('.memoTable');
+        // Further memo adding logic...
+    }
+}
 
 interface ToggleableElement {
-  checkbox: Cash;
-  icon: Cash;
+    checkbox: Cash;
+    icon: Cash;
 }
 
-function toggleCheckbox(element: ToggleableElement) {
-  element.checkbox.on('change', function () {
-    const isChecked = $(this).is(':checked');
-    $(this).css('--tglbg', isChecked ? '#fcac23' : '#f0f0f0');
-    element.icon.toggle(!isChecked);
-  });
-}
-
-const preview: ToggleableElement = {
-  checkbox: $('input[type="checkbox"]', '#preview'),
-  icon: $('i', '#preview'),
-};
-
-const user_info: ToggleableElement = {
-  checkbox: $('input[type="checkbox"]', '#user-info'),
-  icon: $('i', '#user-info'),
-};
-
-const user_tag: ToggleableElement = {
-  checkbox: $('input[type="checkbox"]', '#user-tag'),
-  icon: $('i', '#user-tag'),
-};
-
-const auto_navigation: ToggleableElement = {
-  checkbox: $('input[type="checkbox"]', '#auto-navigation'),
-  icon: $('i', '#auto-navigation'),
-};
-
-const admin_panel: ToggleableElement = {
-  checkbox: $('input[type="checkbox"]', '#admin-panel'),
-  icon: $('i', '#admin-panel'),
-};
-
-toggleCheckbox(preview);
-toggleCheckbox(user_info);
-toggleCheckbox(user_tag);
-toggleCheckbox(auto_navigation);
-toggleCheckbox(admin_panel);
-
-$('#memoSelect span').on('click', function () {
-  $(this).addClass('selected');
-  $('#memoSelect span').not(this).removeClass('selected');
-});
-
-function addMemo($node: Cash) {
-  const $list = $node.find('.memoTable');
-}
+// 인스턴스 생성 및 초기화
+new AutocompleteManager();
+new SideNavManager();
+new PauseResumeManager();
+new DropdownManager();
+new ToggleManager([
+    {
+        checkbox: $('input[type="checkbox"]', '#preview'),
+        icon: $('i', '#preview'),
+    },
+    {
+        checkbox: $('input[type="checkbox"]', '#user-info'),
+        icon: $('i', '#user-info'),
+    },
+    {
+        checkbox: $('input[type="checkbox"]', '#user-tag'),
+        icon: $('i', '#user-tag'),
+    },
+    {
+        checkbox: $('input[type="checkbox"]', '#auto-navigation'),
+        icon: $('i', '#auto-navigation'),
+    },
+    {
+        checkbox: $('input[type="checkbox"]', '#admin-panel'),
+        icon: $('i', '#admin-panel'),
+    },
+]);
+new MemoManager();

@@ -26,6 +26,7 @@ export default [
       // ESLint 및 TypeScript 관련 추천 규칙들을 병합
       ...pluginJs.configs.recommended.rules, // 기본 JavaScript 추천 규칙
       ...tseslint.configs.recommended.rules, // TypeScript 추천 규칙
+      'no-unused-expressions': 'off',
     },
   },
 ];
