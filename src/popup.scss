@@ -6,261 +6,269 @@
 @import './styles/utility.scss';
 
 @font-face {
-  font-family: 'NanumSquareRound';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
-    format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'NanumSquareRound';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+        format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 * {
-  font-family: 'NanumSquareRound';
+    font-family: 'NanumSquareRound';
 }
 
 @mixin transition($property, $duration: 0.3s, $timing: ease) {
-  transition: #{$property} #{$duration} #{$timing};
+    transition: #{$property} #{$duration} #{$timing};
 }
 
 body {
-  width: 500px;
-  height: 700px;
-  background-color: $background-white;
+    width: 500px;
+    height: 700px;
+    background-color: $background-white;
 }
 
 main {
-  min-width: 500px;
-  min-height: 700px;
-  @include transition(filter);
+    min-width: 500px;
+    min-height: 700px;
+    @include transition(filter);
 }
 
 #sideNav {
-  nav {
-    position: relative;
-    flex-direction: row;
-    font-size: 16px;
-    margin: 15px;
+    nav {
+        position: relative;
+        flex-direction: row;
+        font-size: 16px;
+        margin: 15px;
 
-    .close {
-      position: absolute;
-      right: 0;
-      top: -11px;
+        .close {
+            position: absolute;
+            right: 0;
+            top: -11px;
+        }
     }
-  }
 }
 
 #options button {
-  padding: 12px 24px;
-  margin: 0;
-  min-width: 303px;
-  &:hover {
-    background-color: $light-gray;
-  }
-  span {
-    margin-top: 3px;
-    margin-left: 15px;
-  }
+    padding: 12px 24px;
+    margin: 0;
+    min-width: 303px;
+    &:hover {
+        background-color: $light-gray;
+    }
+    span {
+        margin-top: 3px;
+        margin-left: 15px;
+    }
 }
 
 .dropdown-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out,
-    padding-bottom 0.3s ease-in-out;
-  display: block;
-  opacity: 0;
-  position: relative;
-  background-color: inherit;
-  padding-bottom: 0;
-  padding-left: 10px;
-  top: -15px;
-  margin: 0 -40px 0 20px;
-  max-width: 300px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out,
+        padding-bottom 0.3s ease-in-out;
+    display: block;
+    opacity: 0;
+    position: relative;
+    background-color: inherit;
+    padding-bottom: 0;
+    padding-left: 10px;
+    top: -15px;
+    margin: 0 -40px 0 20px;
+    max-width: 300px;
 
-  &.open {
-    opacity: 1;
-    max-height: 250px;
-    padding-bottom: 250px;
-  }
+    &.open {
+        opacity: 1;
+        max-height: 250px;
+        padding-bottom: 250px;
+    }
 
-  input {
-    left: 75px;
-    color: black;
-    --radius-start: none;
-    --radius-end: none;
-  }
+    input {
+        left: 75px;
+        color: black;
+        --radius-start: none;
+        --radius-end: none;
+    }
 
-  li {
-    padding: 12.5px 0 12.5px 0;
-  }
+    li {
+        padding: 12.5px 0 12.5px 0;
+    }
 }
 
 .daisy-tab-content {
-  margin-left: 60px;
-  min-height: 235px;
-  max-width: 300px;
+    margin-left: 60px;
+    min-height: 235px;
+    max-width: 300px;
 }
 
 .daisy-tabs.daisy-tabs-lifted.daisy-tabs-xs {
-  min-width: 500px;
-  transform: translate(-0.6in, 0.2in);
+    min-width: 500px;
+    transform: translate(-0.6in, 0.2in);
 }
 
 .daisy-tabs-lifted > .daisy-tab:is(input:checked):before {
-  --radius-start: none;
-  --radius-end: none;
+    --radius-start: none;
+    --radius-end: none;
 }
 
 .daisy-tabs-lifted
-  > .daisy-tab:is(.daisy-tab-active, [aria-selected='true']):not(
-    .daisy-tab-disabled
-  ):not([disabled]),
+    > .daisy-tab:is(.daisy-tab-active, [aria-selected='true']):not(
+        .daisy-tab-disabled
+    ):not([disabled]),
 .daisy-tabs-lifted > .daisy-tab:is(input:checked) {
-  background-color: #fcac23;
+    background-color: #fcac23;
 }
 
 i.material-symbols-outlined,
 .no-drag {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #navbar {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
-  .select {
-    width: 60px;
-  }
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+    .select {
+        width: 60px;
+    }
 }
 
 #search {
-  position: absolute;
-  top: -3.5px;
-  right: 0px;
-  width: 225px;
-  padding: 0.5rem;
-  padding-right: 2.5rem;
-  outline: none;
+    position: absolute;
+    top: -3.5px;
+    right: 0px;
+    width: 225px;
+    padding: 0.5rem;
+    padding-right: 2.5rem;
+    outline: none;
 }
 
 #clear-button {
-  position: fixed;
-  left: 310px;
-  color: #999; /* 버튼 색상 */
+    position: fixed;
+    left: 310px;
+    color: #999; /* 버튼 색상 */
 }
 
 .awesomplete ul {
-  position: absolute;
-  width: 62%;
-  top: 100%;
-  right: 2.3rem;
-  max-height: 150px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 0.4rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  padding: 10px;
+    position: absolute;
+    width: 62%;
+    top: 100%;
+    right: 2.3rem;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding: 10px;
 
-  li {
-    color: darkgrey;
+    li {
+        color: darkgrey;
 
-    mark {
-      background: inherit;
-      color: black;
+        mark {
+            background: inherit;
+            color: black;
+        }
     }
-  }
 }
 .awesomplete span {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 i.material-symbols-outlined.search {
-  right: 0;
-  border: 3px solid $default-blue;
-  border-radius: 0 0.4rem 0.4rem 0;
-  padding: 0.25rem;
+    right: 0;
+    border: 3px solid $default-blue;
+    border-radius: 0 0.4rem 0.4rem 0;
+    padding: 0.25rem;
 }
 
 #more {
-  margin-left: 68px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 12px;
-  padding-right: 12px;
-  z-index: 1000;
+    margin-left: 68px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    z-index: 1000;
 }
 
 #pause,
 #resume {
-  margin-left: 16px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 12px;
-  padding-right: 12px;
+    margin-left: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 .sideNav {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 303px;
-  height: 700px;
-  background-color: $background-white;
-  color: white;
-  @include transition(left, 0.5s);
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 303px;
+    height: 700px;
+    background-color: $background-white;
+    color: white;
+    @include transition(left, 0.5s);
+    z-index: 1000;
 
-  &.open {
-    left: 0;
-  }
+    &.open {
+        left: 0;
+    }
 }
 
 .more {
-  z-index: 500;
+    z-index: 500;
 }
 
 .scrollable {
-  width: 250px;
-  height: 205px;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  scrollbar-color: color-mix(in oklch, currentColor 35%, $orange) transparent !important;
+    width: 250px;
+    height: 205px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-color: color-mix(in oklch, currentColor 35%, $orange) transparent !important;
 }
 
 #memoSelect {
-  margin-top: 20px;
-  height: 235px;
-  span {
-    display: grid;
-    margin: 5px 0 5px 0;
-    left: -30px;
-    height: 60px;
-    text-align: center;
-    font-size: 13px;
-    max-width: 20px;
-    align-items: center;
-    &.selected {
-      border-width: 2px;
-      border-style: dotted;
-      border-color: black;
-      background-color: $light-orange;
+    margin-top: 20px;
+    height: 235px;
+    span {
+        display: grid;
+        margin: 5px 0 5px 0;
+        left: -30px;
+        height: 60px;
+        text-align: center;
+        font-size: 13px;
+        max-width: 20px;
+        align-items: center;
+        &.selected {
+            border-width: 2px;
+            border-style: dotted;
+            border-color: black;
+            background-color: $light-orange;
+        }
     }
-  }
 }
 
 .memoTable {
-  position: fixed;
-  margin-top: -80px;
-  left: 60px;
-  display: flex;
-  max-width: 225px;
-  align-items: start;
-  justify-content: center;
-  thead > tr th {
-    padding: 0 20px 0 20px;
-    font-size: 14px;
-    color: black;
-  }
+    position: fixed;
+    margin-top: -80px;
+    left: 80px;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    tbody {
+        height: 161px;
+        scrollbar-color: color-mix(in oklch, currentColor 0%, #f2af83)
+            transparent !important;
+    }
+    thead > tr th,
+    tbody > tr td {
+        width: 116px;
+        padding: 5px 0 5px 0;
+        font-size: 14px;
+        color: black;
+        border: 1px solid black;
+    }
 }
