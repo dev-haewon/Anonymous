@@ -1,6 +1,12 @@
 import $, { Cash } from 'cash-dom';
 import Awesomplete from 'awesomplete';
+import Velocity from 'velocity-animate';
 import data from '../public/mgalleryDB.json';
+
+// Cash-DOM 객체에 velocity 메서드 확장
+($.fn as any).velocity = function (animation: any, options: any) {
+    return Velocity(this, animation, options);
+};
 
 class HeaderGUI {
     constructor() {
@@ -209,18 +215,20 @@ class HeaderGUI {
     private addMemo(data: string) {
         const $tbody = $(`#memoTable tbody[data-target="${data}"]`);
         const $newMemo = $('#forCloneMemo tr').clone();
-        $newMemo.appendTo($tbody);
-        this.bindMemoEvents($newMemo, data);
-        // 새로운 메모를 추가하기 전에 기존의 메모가 추가되었는지 확인
-        // const existingMemoCount = $tbody.find('tr').length;
+        $newMemo.appendTo($tbody).hide().velocity('slideDown', {
+            duration: 200,
+        });
 
-        // 메모가 이미 존재하지 않는 경우에만 추가
-        // if (existingMemoCount === 0) {
-        //     $clonedTarget.appendTo($tbody);
-        // } else {
-        //     // 필요한 경우 기존의 메모에 추가하는 로직을 작성할 수 있습니다.
-        // }
-        // this.bindMemoEvents();
+        this.bindMemoEvents($newMemo, data);
+    }
+
+    private removeMemo($memo: Cash) {
+        $memo.velocity('slideUp', {
+            duration: 400,
+            complete: () => {
+                $memo.remove();
+            },
+        });
     }
 
     /**
@@ -237,35 +245,21 @@ class HeaderGUI {
             const allFilled = $keyInput !== '' && $valueInput !== '';
             const selfIndex = $tr.index() + 1;
             const memoLength = $(this).closest('tbody').find('tr').length;
-            console.log(selfIndex, memoLength);
             const isLastMemo = selfIndex === memoLength;
             if (allFilled && isLastMemo) self.addMemo(data);
         });
+
+        $inputs.on('blur', function () {
+            const $tr = $(this).closest('tr');
+            const $keyInput = $tr.find('.key').val();
+            const $valueInput = $tr.find('.value').val();
+            const allEmpty = $keyInput === '' && $valueInput === '';
+            const selfIndex = $tr.index() + 1;
+            const memoLength = $(this).closest('tbody').find('tr').length;
+            const isLastMemo = selfIndex === memoLength;
+            if (allEmpty && !isLastMemo) self.removeMemo($tr);
+        });
     }
-    // private bindMemoEvents() {
-    //     const self = this;
-
-    //     // 모든 td > input 요소에 대해 이벤트 바인딩을 한 번만 수행
-    //     $('#memoTable').on('keyup', function (e) {
-    //         e.preventDefault();
-
-    //         const $form = $(this);
-    //         const $tbody = $form.closest('tbody');
-    //         const data = $tbody.data('target');
-
-    //         // 모든 input 요소가 채워졌는지 확인
-    //         const allFilled =
-    //             $form.find('input').filter(function () {
-    //                 return $(this).val() === '';
-    //             }).length === 0;
-
-    //         if (allFilled) {
-    //             self.addMemo(data);
-    //             // 폼 초기화
-    //             $form.find('input').val('');
-    //         }
-    //     });
-    // }
 }
 
 // 인스턴스 생성 및 초기화

@@ -77,6 +77,9 @@ importers:
       typescript-eslint:
         specifier: 8.8.1
         version: 8.8.1(eslint@9.12.0(jiti@1.21.6))(typescript@5.6.2)
+      velocity-animate:
+        specifier: ^1.5.2
+        version: 1.5.2
 
 packages:
 
@@ -2069,6 +2072,9 @@ packages:
   value-or-function@4.0.0:
     resolution: {integrity: sha512-aeVK81SIuT6aMJfNo9Vte8Dw0/FZINGBV8BfCraGtqVxIeLAEhJyoWs8SmvRVmXfGss2PmmOwZCuBPbZR+IYWg==}
     engines: {node: '>= 10.13.0'}
+
+  velocity-animate@1.5.2:
+    resolution: {integrity: sha512-m6EXlCAMetKztO1ppBhGU1/1MR3IiEevO6ESq6rcrSQ3Q77xYSW13jkfXW88o4xMrkXJhy/U7j4wFR/twMB0Eg==}
 
   vinyl-contents@1.0.0:
     resolution: {integrity: sha512-xBH8ZUy8IK7K06eCBmd2GGjdf1EqNEGPNfRP2VsrCvSvsOggywGCGZg435WZiG/kcyCdXc1CZXCf4pUJ2EuEsg==}
@@ -4178,6 +4184,8 @@ snapshots:
   v8flags@4.0.1: {}
 
   value-or-function@4.0.0: {}
+
+  velocity-animate@1.5.2: {}
 
   vinyl-contents@1.0.0:
     dependencies:
