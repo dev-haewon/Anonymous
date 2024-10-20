@@ -250,9 +250,9 @@ i.material-symbols-outlined.search {
     }
 }
 
-.memoTable {
+#memoTable {
     position: fixed;
-    margin-top: -80px;
+    top: 30px;
     left: 80px;
     display: grid;
     text-align: center;
@@ -266,9 +266,16 @@ i.material-symbols-outlined.search {
     thead > tr th,
     tbody > tr td {
         width: 116px;
-        padding: 5px 0 5px 0;
+        height: 32px;
         font-size: 14px;
         color: black;
         border: 1px solid black;
+        input {
+            width: 112px;
+            max-height: 32px;
+            background-color: transparent;
+            text-align: center;
+            outline: none;
+        }
     }
 }

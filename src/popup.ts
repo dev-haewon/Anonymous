@@ -3,9 +3,6 @@ import Awesomplete from 'awesomplete';
 import data from '../public/mgalleryDB.json';
 
 class HeaderGUI {
-    private isOpen = false;
-    private isPaused = false;
-
     constructor() {
         this.setupAutocomplete();
         this.setupSideNav();
@@ -13,6 +10,7 @@ class HeaderGUI {
         this.setupDropdown();
         this.setupToggleCheckboxes();
         this.setupMemo();
+        this.addMemo('user');
     }
 
     /**
@@ -45,14 +43,13 @@ class HeaderGUI {
         const main = $('main');
         const more = $('#more');
         const closeBtn = $('button.close');
-
-        const self = this;
+        let isOpen = false;
 
         // 사이드바 여는 함수
         function openSideNav() {
             sideNav.addClass('open');
             main.addClass('dimmed');
-            self.isOpen = true;
+            isOpen = true;
             $(document).on('click.outside', handleOutsideClick);
         }
 
@@ -60,14 +57,14 @@ class HeaderGUI {
         function closeSideNav() {
             sideNav.removeClass('open');
             main.removeClass('dimmed');
-            self.isOpen = false;
+            isOpen = false;
             $(document).off('click.outside');
         }
 
         // 사이드바 여닫는 토글
         function toggleSideNav(e: MouseEvent) {
             e.stopPropagation();
-            self.isOpen ? closeSideNav() : openSideNav();
+            isOpen ? closeSideNav() : openSideNav();
         }
 
         // 사이드바 외부 클릭 이벤트 핸들러
@@ -91,19 +88,18 @@ class HeaderGUI {
     private setupPauseResume() {
         const pause = $('#pause');
         const resume = $('#resume');
-
-        const self = this;
+        let isPaused = false;
 
         // 일시정지 토글
         function togglePause(e: MouseEvent) {
             e.stopPropagation();
-            self.isPaused = !self.isPaused;
+            isPaused = !isPaused;
             updateUI();
         }
 
         // UI 업데이트
         function updateUI() {
-            if (self.isPaused) {
+            if (isPaused) {
                 pause.hide();
                 resume.show();
             } else {
@@ -157,7 +153,7 @@ class HeaderGUI {
     }
 
     /**
-     * 토글 채크박스들 설정
+     * 토글 체크박스들 설정
      */
     private setupToggleCheckboxes() {
         // 토글 체크박스 요소들
@@ -192,24 +188,84 @@ class HeaderGUI {
             });
         });
     }
+
     /**
-     * 메모설정
+     * 메모 설정
      */
     private setupMemo() {
         $('#memoSelect span').on('click', function () {
-            $('.memoTable tbody').hide();
+            $('#memoTable tbody').hide();
             $(this).addClass('selected');
 
             const target = $(this).data('target');
-            $(`.memoTable tbody[data-target="${target}"]`).show();
+            $(`#memoTable tbody[data-target="${target}"]`).show();
             $('#memoSelect span').not(this).removeClass('selected');
         });
-
-        const addMemo = ($node: Cash) => {
-            const $list = $node.find('.memoTable');
-            // Further memo adding logic...
-        };
     }
+
+    /**
+     * 메모 추가
+     */
+    private addMemo(data: string) {
+        const $tbody = $(`#memoTable tbody[data-target="${data}"]`);
+        const $newMemo = $('#forCloneMemo tr').clone();
+        $newMemo.appendTo($tbody);
+        this.bindMemoEvents($newMemo, data);
+        // 새로운 메모를 추가하기 전에 기존의 메모가 추가되었는지 확인
+        // const existingMemoCount = $tbody.find('tr').length;
+
+        // 메모가 이미 존재하지 않는 경우에만 추가
+        // if (existingMemoCount === 0) {
+        //     $clonedTarget.appendTo($tbody);
+        // } else {
+        //     // 필요한 경우 기존의 메모에 추가하는 로직을 작성할 수 있습니다.
+        // }
+        // this.bindMemoEvents();
+    }
+
+    /**
+     * 메모 입력 이벤트 바인딩
+     */
+    private bindMemoEvents($memo: Cash, data: string) {
+        const self = this;
+        const $inputs = $memo.find('input');
+
+        $inputs.on('input', function () {
+            const $tr = $(this).closest('tr');
+            const $keyInput = $tr.find('.key').val();
+            const $valueInput = $tr.find('.value').val();
+            const allFilled = $keyInput !== '' && $valueInput !== '';
+            const selfIndex = $tr.index() + 1;
+            const memoLength = $(this).closest('tbody').find('tr').length;
+            console.log(selfIndex, memoLength);
+            const isLastMemo = selfIndex === memoLength;
+            if (allFilled && isLastMemo) self.addMemo(data);
+        });
+    }
+    // private bindMemoEvents() {
+    //     const self = this;
+
+    //     // 모든 td > input 요소에 대해 이벤트 바인딩을 한 번만 수행
+    //     $('#memoTable').on('keyup', function (e) {
+    //         e.preventDefault();
+
+    //         const $form = $(this);
+    //         const $tbody = $form.closest('tbody');
+    //         const data = $tbody.data('target');
+
+    //         // 모든 input 요소가 채워졌는지 확인
+    //         const allFilled =
+    //             $form.find('input').filter(function () {
+    //                 return $(this).val() === '';
+    //             }).length === 0;
+
+    //         if (allFilled) {
+    //             self.addMemo(data);
+    //             // 폼 초기화
+    //             $form.find('input').val('');
+    //         }
+    //     });
+    // }
 }
 
 // 인스턴스 생성 및 초기화
