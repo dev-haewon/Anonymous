@@ -1,68 +1,80 @@
 $dimmed-color: #7e7e7e;
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 .dimmed {
-  filter: brightness(0.66);
-  background-color: $dimmed-color;
+    filter: brightness(0.66);
+    background-color: $dimmed-color;
 }
 
 .font-base {
-  font-size: 16px;
-  line-height: 24px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.font-s {
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .font-xs {
-  font-size: 12px;
-  line-height: 16px;
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .text-thin {
-  font-weight: lighter;
+    font-weight: lighter;
 }
 
 .text-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .my-gap {
-  margin-top: 16px;
-  margin-bottom: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .mr-1 {
-  margin-right: 6px;
+    margin-right: 6px;
+}
+
+.ml-1 {
+    margin-left: 6px;
 }
 
 .ml-24 {
-  margin-left: 24px;
+    margin-left: 24px;
 }
 
 .ml-10 {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 .left {
-  left: -7px;
+    left: 50px;
 }
 
-.w-300 {
-  width: 310px;
+.w-225 {
+    width: 225px;
 }
 
 .w-full {
-  width: 100%;
+    width: 100%;
 }
 
+.h-30 {
+    height: 30px;
+}
 .-rotate-90 {
-  transform: -rotate(90deg) !important;
+    transform: -rotate(90deg) !important;
 }
 
 .gap-10 {
-  gap: 10px;
-  max-width: 162.5px;
+    gap: 10px;
+    max-width: 162.5px;
 }

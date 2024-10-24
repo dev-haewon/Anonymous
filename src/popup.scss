@@ -14,6 +14,7 @@
 }
 
 * {
+    box-sizing: border-box;
     font-family: 'NanumSquareRound';
 }
 
@@ -22,14 +23,14 @@
 }
 
 body {
-    width: 500px;
-    height: 700px;
+    width: 375px;
+    height: 600px;
     background-color: $background-white;
 }
 
 main {
-    min-width: 500px;
-    min-height: 700px;
+    min-width: 375px;
+    min-height: 600px;
     @include transition(filter);
 }
 
@@ -38,8 +39,6 @@ main {
         position: relative;
         flex-direction: row;
         font-size: 16px;
-        margin: 15px;
-
         .close {
             position: absolute;
             right: 0;
@@ -136,11 +135,15 @@ i.material-symbols-outlined,
 #search {
     position: absolute;
     top: -3.5px;
-    right: 0px;
-    width: 225px;
+    left: 67px;
+    width: 188px;
     padding: 0.5rem;
     padding-right: 2.5rem;
     outline: none;
+}
+
+#search-type {
+    position: absolute;
 }
 
 #clear-button {
@@ -151,7 +154,7 @@ i.material-symbols-outlined,
 
 .awesomplete ul {
     position: absolute;
-    width: 62%;
+    width: 57.5%;
     top: 100%;
     right: 2.3rem;
     max-height: 150px;
@@ -162,6 +165,8 @@ i.material-symbols-outlined,
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     z-index: 10;
     padding: 10px;
+    font-size: 14px;
+    line-height: 20px;
 
     li {
         color: darkgrey;
@@ -177,35 +182,39 @@ i.material-symbols-outlined,
 }
 
 i.material-symbols-outlined.search {
-    right: 0;
+    right: -3px;
     border: 3px solid $default-blue;
     border-radius: 0 0.4rem 0.4rem 0;
     padding: 0.25rem;
+    margin: 0;
 }
 
 #more {
-    margin-left: 68px;
+    left: 18px;
+    margin-left: 315px;
     padding-top: 4px;
     padding-bottom: 4px;
-    padding-left: 12px;
-    padding-right: 12px;
-    z-index: 1000;
+    padding-left: 6px;
+    padding-right: 6px;
+    z-index: 500;
 }
 
 #pause,
 #resume {
-    margin-left: 16px;
+    left: -16px;
+    margin-left: 300px;
     padding-top: 4px;
     padding-bottom: 4px;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 1000;
 }
 
 .sideNav {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 303px;
+    width: 375px;
     height: 700px;
     background-color: $background-white;
     color: white;

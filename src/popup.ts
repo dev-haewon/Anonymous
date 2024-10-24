@@ -1,11 +1,23 @@
 import $, { Cash } from 'cash-dom';
 import Awesomplete from 'awesomplete';
-import Velocity from 'velocity-animate';
-import data from '../public/mgalleryDB.json';
+import Velocity, {
+    VelocityOptions,
+    AnimationProperties,
+} from 'velocity-animate';
+
+import data from '../public/databases/mgalleryDB.json';
 
 // Cash-DOM 객체에 velocity 메서드 확장
-($.fn as any).velocity = function (animation: any, options: any) {
-    return Velocity(this, animation, options);
+(
+    $.fn as unknown as {
+        velocity: (
+            animation: AnimationProperties | string,
+            options?: VelocityOptions
+        ) => Cash;
+    }
+).velocity = function (animation, options) {
+    Velocity(this, animation, options);
+    return this; // Cash 객체 반환하여 체이닝 가능하게 함
 };
 
 class HeaderGUI {
@@ -16,7 +28,6 @@ class HeaderGUI {
         this.setupDropdown();
         this.setupToggleCheckboxes();
         this.setupMemo();
-        this.addMemo('user');
     }
 
     /**
@@ -207,6 +218,9 @@ class HeaderGUI {
             $(`#memoTable tbody[data-target="${target}"]`).show();
             $('#memoSelect span').not(this).removeClass('selected');
         });
+        this.addMemo('user');
+        this.addMemo('nick');
+        this.addMemo('ip');
     }
 
     /**
@@ -216,7 +230,7 @@ class HeaderGUI {
         const $tbody = $(`#memoTable tbody[data-target="${data}"]`);
         const $newMemo = $('#forCloneMemo tr').clone();
         $newMemo.appendTo($tbody).hide().velocity('slideDown', {
-            duration: 200,
+            duration: 250,
         });
 
         this.bindMemoEvents($newMemo, data);

@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "DCSwiper Reborn",
+    "version": "0.0.0",
+    "permissions": ["activeTab"],
+    "host_permissions": ["https://*.dcinside.com/*"],
+    "action": {
+        "default_popup": "./popup.html"
+    },
+    "content_scripts": [
+        {
+            "js": ["./src/main.js"],
+            "matches": ["https://*.dcinside.com/*"],
+            "run_at": "document_start"
+        }
+    ]
+}
