@@ -34,21 +34,44 @@ class HeaderGUI {
      * 검색어 자동완성 설정
      */
     private setupAutocomplete() {
-        const searchInput = $('#search')[0] as HTMLInputElement;
+        const searchInput = $('#search'); // jQuery 객체로 선택
         const searchType = $('#search-type');
-        const awesomplete = new Awesomplete(searchInput, { minChars: 1 });
+        const clearBtn = $('#clear-button');
+        const awesomplete = new Awesomplete(
+            searchInput[0] as HTMLInputElement,
+            { minChars: 1 }
+        );
+
+        // 검색 입력값에 따른 clear 버튼 표시/숨김 처리
+        const toggleClearButton = () => {
+            searchInput.val() ? clearBtn.show() : clearBtn.hide();
+        };
 
         // 검색어 리스트 업데이트
-        function updateList() {
+        const updateList = () => {
             const items =
                 searchType.val() === 'id'
                     ? Object.values(data)
                     : Object.keys(data);
-            searchInput.value = '';
+            searchInput.val(''); // jQuery의 val() 사용
             awesomplete.list = items;
-        }
+        };
+
+        // 이벤트 핸들러 설정
+        searchInput.on('input', toggleClearButton);
+        clearBtn.on('click', () => {
+            searchInput.val('');
+            clearBtn.hide();
+        });
+
+        searchInput.on('focus', () => clearBtn.show());
+        searchInput.on('blur', () => {
+            setTimeout(() => clearBtn.hide(), 200);
+        });
 
         searchType.on('change', updateList);
+
+        // 초기 리스트 업데이트
         updateList();
     }
 

@@ -36,13 +36,14 @@ main {
 
 #sideNav {
     nav {
+        margin: 20px;
         position: relative;
         flex-direction: row;
         font-size: 16px;
         .close {
             position: absolute;
             right: 0;
-            top: -11px;
+            top: 0;
         }
     }
 }
@@ -94,12 +95,13 @@ main {
 }
 
 .daisy-tab-content {
-    margin-left: 60px;
+    margin-left: 50px;
     min-height: 235px;
-    max-width: 300px;
+    max-width: 375px;
 }
 
 .daisy-tabs.daisy-tabs-lifted.daisy-tabs-xs {
+    margin-left: 30px;
     min-width: 500px;
     transform: translate(-0.6in, 0.2in);
 }
@@ -148,7 +150,7 @@ i.material-symbols-outlined,
 
 #clear-button {
     position: fixed;
-    left: 310px;
+    left: 225px;
     color: #999; /* 버튼 색상 */
 }
 
@@ -215,12 +217,14 @@ i.material-symbols-outlined.search {
     top: 0;
     left: -100%;
     width: 375px;
-    height: 700px;
+    height: 600px;
     background-color: $background-white;
     color: white;
     @include transition(left, 0.5s);
     z-index: 1000;
-
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-color: color-mix(in oklch, currentColor 35%, black) transparent !important;
     &.open {
         left: 0;
     }
@@ -231,7 +235,7 @@ i.material-symbols-outlined.search {
 }
 
 .scrollable {
-    width: 250px;
+    width: 266px;
     height: 205px;
     overflow-y: scroll;
     scroll-behavior: smooth;
